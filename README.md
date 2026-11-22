@@ -1,39 +1,11 @@
-# CodeAlpha - Network Packet Sniffer
+# Network Packet Sniffer
 
-## Task 1: Basic Network Sniffer
+A Python standard-library project from the CodeAlpha cybersecurity internship. The live capture path uses Linux packet sockets to read IPv4 traffic and summarize TCP, UDP, and ICMP headers.
 
-### Language: Python (No external libraries needed!)
+## Implementation
 
-### Description
-An advanced network packet sniffer and scanner built entirely with Python's standard library. Captures and analyzes network traffic in real-time.
+[CodeAlpha_NetworkSniffer.py](CodeAlpha_NetworkSniffer.py) contains the packet parser, protocol filters, service checks, and JSON export. Live capture requires Linux and permission to open a raw packet socket. The capture socket selects IPv4 frames, so ARP traffic is outside the live capture path.
 
-### Features
-- **Packet Sniffing**: Capture TCP, UDP, ICMP, and ARP packets
-- **Protocol Analysis**: Parse IP, TCP, UDP, ICMP, and ARP headers
-- **Filtering**: Filter by protocol (TCP, UDP, ICMP, ARP)
-- **Port Scanning**: Scan for open ports on targets
-- **Service Detection**: Identify services running on open ports
-- **Banner Grabbing**: Capture service banners
-- **JSON Reports**: Export results and captured packets
+## Output
 
-### Requirements
-- Python 3.6+
-- Administrator/root privileges (for packet sniffing)
-
-### How to Use
-
-#### Packet Sniffing Mode:
-```bash
-# Capture all packets (admin/root required)
-python CodeAlpha_NetworkSniffer.py --sniff
-
-# Capture 10 packets
-python CodeAlpha_NetworkSniffer.py --sniff --count 10
-
-# Filter by protocol
-python CodeAlpha_NetworkSniffer.py --sniff --filter tcp
-python CodeAlpha_NetworkSniffer.py --sniff --filter udp
-python CodeAlpha_NetworkSniffer.py --sniff --filter icmp
-
-# Save captured packets
-python CodeAlpha_NetworkSniffer.py --sniff --save-packets packets.json --verbose
+The terminal displays packet summaries. JSON export preserves structured records for later inspection. Captures and reports belong in local working directories.
